@@ -1,121 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Resume | P&W Candidate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pw-blue: #003366;
+            --accent-orange: #F59E0B;
+            --tech-silver: #94A3B8;
+            --bg-dark: #0F172A;
+            --grid-color: #e2e8f0;
+        }
 
-  <title>Michael Primo | Mission Ready Resume</title>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+            background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: #1e293b;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Roboto+Mono&display=swap" rel="stylesheet">
+        /* --- HERO SECTION --- */
+        .hero-header {
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 20px 20px;
+            color: white;
+            padding: 60px 40px;
+            border-bottom: 4px solid var(--pw-blue);
+        }
+        .header-content { max-width: 1100px; margin: 0 auto; }
+        .status-badge {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid var(--accent-orange);
+            color: var(--accent-orange);
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .dot { height: 8px; width: 8px; background-color: var(--accent-orange); border-radius: 50%; display: inline-block; margin-right: 5px; animation: blink 1.5s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        
+        .main-info { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 30px; flex-wrap: wrap; }
+        h1 { font-size: 3.5rem; margin: 0; letter-spacing: -2px; }
+        .title-tag { color: var(--tech-silver); letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; }
+        .contact-grid { display: grid; gap: 5px; font-family: 'Roboto Mono', monospace; font-size: 13px; }
+        .label { color: var(--accent-orange); margin-right: 10px; }
 
-  <!-- Main Styles -->
-  <link rel="stylesheet" href="styles.css">
+        /* --- MAIN LAYOUT --- */
+        .resume-container { display: flex; max-width: 1100px; margin: 0 auto; background: white; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+        .left-column { flex: 2; padding: 50px; border-right: 1px solid #e2e8f0; }
+        .right-column { flex: 1; padding: 50px; background: #fcfdfe; }
+
+        /* --- EXPERIENCE --- */
+        .section-title { color: var(--pw-blue); font-size: 1rem; letter-spacing: 3px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 30px; }
+        .timeline-item { position: relative; padding-left: 30px; border-left: 2px solid #e2e8f0; margin-bottom: 40px; }
+        .timeline-marker { position: absolute; left: -7px; top: 5px; width: 12px; height: 12px; background: var(--pw-blue); border: 2px solid white; border-radius: 50%; transition: 0.3s; }
+        .timeline-item:hover .timeline-marker { background: var(--accent-orange); box-shadow: 0 0 10px var(--accent-orange); }
+        .job-header { display: flex; justify-content: space-between; margin-bottom: 5px; }
+        .job-header h3 { margin: 0; font-size: 1.2rem; }
+        .date-tag { font-family: 'Roboto Mono', monospace; font-size: 0.75rem; background: #f1f5f9; padding: 2px 8px; }
+        .company-sub { color: var(--pw-blue); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 15px; }
+        .tech-tags { list-style: none; padding: 0; display: flex; gap: 8px; flex-wrap: wrap; margin-top: 15px; }
+        .tech-tags li { font-family: 'Roboto Mono', monospace; font-size: 0.65rem; border: 1px solid #cbd5e1; padding: 2px 6px; color: #64748b; }
+
+        /* --- SIDEBAR --- */
+        .sidebar-block { margin-bottom: 40px; }
+        .sidebar-title { font-size: 0.75rem; letter-spacing: 2px; color: var(--pw-blue); border-bottom: 2px solid var(--accent-orange); padding-bottom: 5px; margin-bottom: 15px; }
+        .spec-list { list-style: none; padding: 0; font-size: 0.85rem; }
+        .spec-label { font-family: 'Roboto Mono', monospace; font-weight: bold; color: var(--tech-silver); font-size: 0.7rem; display: block; }
+        .gauge-bar { width: 100%; height: 4px; background: #e2e8f0; margin-top: 4px; }
+        .gauge-fill { height: 100%; background: var(--pw-blue); }
+
+        /* --- FOOTER --- */
+        .terminal-footer { background: var(--bg-dark); color: white; padding: 60px 40px 20px; }
+        .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .value-card h4 { margin: 0 0 5px; font-size: 0.8rem; letter-spacing: 1px; color: var(--accent-orange); }
+        .value-card p { font-size: 0.7rem; color: var(--tech-silver); margin: 0; }
+        .footer-bottom { text-align: center; margin-top: 50px; font-family: 'Roboto Mono', monospace; font-size: 10px; color: #475569; border-top: 1px solid #1e293b; padding-top: 20px; }
+
+        @media print {
+            body { background: white; }
+            .hero-header { background: white !important; color: black !important; border-bottom: 4px solid black; }
+            .terminal-footer { display: none; }
+            .resume-container { box-shadow: none; }
+            .right-column { background: white; border-left: 1px solid #eee; }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- ================= HERO HEADER ================= -->
-<header class="hero-header">
-  <div class="header-content">
-
-    <div class="top-row">
-      <span class="status-badge">
-        <span class="dot"></span> MISSION READY
-      </span>
-    </div>
-
-    <div class="main-info">
-      <div class="name-block">
-        <h1>Michael Primo</h1>
-        <p class="title-tag">SAFETY • OPERATIONS • TECHNICAL SYSTEMS</p>
-      </div>
-
-      <div class="contact-grid">
-        <div><span class="label">LOC //</span> Southington, CT</div>
-        <div><span class="label">EML //</span> <a href="mailto:mprimo027@gmail.com">mprimo027@gmail.com</a></div>
-        <div><span class="label">GIT //</span> <a href="https://github.com/1ZERODAYPRIMO">github.com/1ZERODAYPRIMO</a></div>
-        <div><span class="label">WEB //</span> <a href="https://1zerodayprimo.github.io/Michael-Primo_Resume/">Live Resume</a></div>
-      </div>
-    </div>
-
-  </div>
-</header>
-
-<!-- ================= BODY ================= -->
-<main class="resume-body">
-
-  <!-- LEFT COLUMN -->
-  <div class="left-column">
-
-    <section class="experience-container">
-      <h2 class="section-title">01 // PROFESSIONAL FLIGHT PATH</h2>
-
-      <div class="timeline-item">
-        <div class="timeline-marker"></div>
-        <div class="timeline-content">
-          <div class="job-header">
-            <h3>Construction & Site Operations</h3>
-            <span class="date-tag">Aug 2020 — Dec 2024</span>
-          </div>
-
-          <div class="company-sub">Franklin Construction</div>
-
-          <p class="job-description">
-            Supported safety-critical construction operations across regulated job sites.
-            Executed material handling, equipment operation, and compliance-driven workflows
-            in coordination with supervisors and inspection authorities.
-          </p>
-
-          <ul class="tech-tags">
-            <li>OSHA 10</li>
-            <li>Heavy Equipment</li>
-            <li>Forklift</li>
-            <li>Jobsite Safety</li>
-            <li>Logistics</li>
-          </ul>
+    <header class="hero-header">
+        <div class="header-content">
+            <span class="status-badge"><span class="dot"></span> MISSION READY: P&W CANDIDATE</span>
+            <div class="main-info">
+                <div>
+                    <h1>YOUR NAME</h1>
+                    <p class="title-tag">Aerospace Systems & Propulsion Specialist</p>
+                </div>
+                <div class="contact-grid">
+                    <div><span class="label">LOC //</span> Hartford, CT</div>
+                    <div><span class="label">EML //</span> name@email.com</div>
+                    <div><span class="label">WEB //</span> linkedin.com/in/yourname</div>
+                </div>
+            </div>
         </div>
-      </div>
+    </header>
 
-    </section>
+    <div class="resume-container">
+        <main class="left-column">
+            <h2 class="section-title">01 // FLIGHT PATH</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="job-header">
+                    <h3>Project Engineer</h3>
+                    <span class="date-tag">2022 — PRESENT</span>
+                </div>
+                <div class="company-sub">Engineering Firm Corp</div>
+                <p>Lead technical diagnostics for high-pressure systems, ensuring 99.9% reliability in safety-critical environments.</p>
+                <ul class="tech-tags">
+                    <li>Root Cause Analysis</li>
+                    <li>Six Sigma</li>
+                    <li>Project Mgmt</li>
+                </ul>
+            </div>
 
-  </div>
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="job-header">
+                    <h3>Mechanical Design Intern</h3>
+                    <span class="date-tag">2020 — 2022</span>
+                </div>
+                <div class="company-sub">AeroSystems Inc.</div>
+                <p>Designed and prototyped turbine component housings using CATIA and SolidWorks for military-grade applications.</p>
+                <ul class="tech-tags">
+                    <li>CAD</li>
+                    <li>Prototyping</li>
+                    <li>AS9100</li>
+                </ul>
+            </div>
+        </main>
 
-  <!-- RIGHT COLUMN -->
-  <aside class="right-column">
+        <aside class="right-column">
+            <div class="sidebar-block">
+                <h3 class="sidebar-title">TECHNICAL SPECS</h3>
+                <div style="margin-bottom: 15px;">
+                    <span class="spec-label">CAD/CAM</span>
+                    <span>SolidWorks, CATIA, NX</span>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <span class="spec-label">ANALYSIS</span>
+                    <span>ANSYS, MATLAB, Python</span>
+                </div>
+            </div>
 
-    <div class="sidebar-block">
-      <h3 class="sidebar-title">TECHNICAL SPECS</h3>
-      <ul class="spec-list">
-        <li><span class="spec-label">SAFETY:</span> OSHA 10, DOT Compliance</li>
-        <li><span class="spec-label">OPS:</span> Heavy Equipment, Forklift</li>
-        <li><span class="spec-label">TRANSPORT:</span> CDL Class A</li>
-        <li><span class="spec-label">SECURITY:</span> TWIC Card</li>
-      </ul>
+            <div class="sidebar-block">
+                <h3 class="sidebar-title">PROFICIENCIES</h3>
+                <div style="margin-bottom:10px">
+                    <span class="spec-label">Thermodynamics</span>
+                    <div class="gauge-bar"><div class="gauge-fill" style="width: 90%;"></div></div>
+                </div>
+                <div style="margin-bottom:10px">
+                    <span class="spec-label">Materials Science</span>
+                    <div class="gauge-bar"><div class="gauge-fill" style="width: 80%;"></div></div>
+                </div>
+            </div>
+
+            <div class="sidebar-block">
+                <h3 class="sidebar-title">CERTIFICATIONS</h3>
+                <p style="font-size: 0.8rem; margin: 0;"><strong>Lean Six Sigma Green Belt</strong></p>
+                <p style="font-size: 0.7rem; color: var(--tech-silver);">ID: LSS-99201</p>
+            </div>
+        </aside>
     </div>
 
-    <div class="sidebar-block">
-      <h3 class="sidebar-title">CERTIFICATIONS</h3>
-
-      <div class="cert-item">
-        <div class="cert-name">CDL Class A</div>
-        <div class="cert-id">State of Connecticut</div>
-      </div>
-
-      <div class="cert-item">
-        <div class="cert-name">TWIC Card</div>
-        <div class="cert-id">Active</div>
-      </div>
-
-      <div class="cert-item">
-        <div class="cert-name">Tanker Endorsement</div>
-        <div class="cert-id">Active</div>
-      </div>
-    </div>
-
-  </aside>
-
-</main>
+    <footer class="terminal-footer">
+        <div class="footer-grid">
+            <div class="value-card">
+                <h4>SAFETY FIRST</h4>
+                <p>Zero-compromise approach to aerospace safety protocols.</p>
+            </div>
+            <div class="value-card">
+                <h4>QUALITY DRIVEN</h4>
+                <p>Precision execution aligned with P&W's Dependable Engines legacy.</p>
+            </div>
+            <div class="value-card">
+                <h4>INNOVATION</h4>
+                <p>Driving the future of sustainable aviation technology.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            REQUISITION: PW-2024-HIRE // CANDIDATE ID: [LASTNAME]-[YEAR] // CONFIDENTIAL
+        </div>
+    </footer>
 
 </body>
 </html>
