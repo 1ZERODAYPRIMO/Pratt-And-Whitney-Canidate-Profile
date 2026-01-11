@@ -2,134 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technical Resume | P&W Candidate</title>
     <style>
-        /* CSS RESET & COLORS */
+        /* THIS SECTION ADDS THE SIDEBAR AND COLORS */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #e2e8f0; color: #1a202c; line-height: 1.5; }
+        body { font-family: sans-serif; background-color: #f1f5f9; display: flex; flex-direction: column; min-height: 100vh; }
 
-        /* THE BLUE TOP HEADER */
-        .header { 
-            background-color: #003366; 
-            color: white; 
-            padding: 50px 20px; 
-            text-align: center;
-            border-bottom: 8px solid #F59E0B; /* Safety Orange Stripe */
-        }
-        .header h1 { font-size: 3rem; letter-spacing: 2px; margin-bottom: 10px; }
-        .header p { font-size: 1.1rem; color: #cbd5e1; font-weight: 300; }
-
-        /* TWO COLUMN LAYOUT */
-        .main-wrapper { 
-            display: flex; 
-            max-width: 1100px; 
-            margin: -30px auto 50px auto; /* Pulls it up into the header slightly */
-            background: white;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            min-height: 800px;
-        }
-
-        /* LEFT SIDEBAR (DARK BLUE) */
-        .sidebar { 
-            flex: 1; 
-            background-color: #002244; 
-            color: white; 
-            padding: 40px 30px; 
-        }
-        .sidebar h3 { color: #F59E0B; font-size: 0.9rem; margin-bottom: 20px; letter-spacing: 2px; border-bottom: 1px solid #1e3a8a; padding-bottom: 5px; }
-        .skill-list { list-style: none; margin-bottom: 40px; }
-        .skill-list li { margin-bottom: 10px; font-size: 0.9rem; display: flex; align-items: center; }
-        .skill-list li::before { content: "✓"; color: #F59E0B; margin-right: 10px; font-weight: bold; }
-
-        /* RIGHT CONTENT (WHITE) */
-        .content { 
-            flex: 2; 
-            padding: 50px; 
-        }
-        h2 { color: #003366; font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center; }
-        h2::after { content: ""; flex: 1; height: 2px; background: #e2e8f0; margin-left: 15px; }
+        header { background: #003366; color: white; padding: 40px; text-align: center; border-bottom: 6px solid #f59e0b; }
         
-        .job-block { margin-bottom: 30px; }
-        .job-title { font-weight: bold; font-size: 1.2rem; color: #1a202c; }
-        .company-info { color: #005bb7; font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; display: block; }
-        ul { margin-left: 20px; color: #4a5568; }
-        li { margin-bottom: 8px; }
+        .main-wrapper { display: flex; flex: 1; max-width: 1000px; margin: 20px auto; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%; }
 
-        /* FOOTER */
-        .footer { background: #0f172a; color: #64748b; text-align: center; padding: 20px; font-family: monospace; font-size: 0.7rem; }
+        .sidebar { width: 300px; background: #002244; color: white; padding: 30px; }
+        .content { flex: 1; padding: 40px; }
+
+        h2 { color: #003366; border-bottom: 2px solid #f59e0b; margin-bottom: 20px; padding-bottom: 5px; }
+        .sidebar h3 { color: #f59e0b; margin-bottom: 15px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .skill-box { background: rgba(255,255,255,0.1); padding: 10px; border-radius: 4px; margin-bottom: 10px; font-size: 0.85rem; }
     </style>
 </head>
 <body>
 
-    <header class="header">
+    <header>
         <h1>YOUR NAME</h1>
-        <p>AEROSPACE OPERATIONS & QUALITY SPECIALIST</p>
+        <p>MISSION READY: PRATT & WHITNEY CANDIDATE</p>
     </header>
 
     <div class="main-wrapper">
         <aside class="sidebar">
-            <h3>CONTACT</h3>
-            <p style="font-size: 0.8rem; margin-bottom: 20px;">
-                📍 Hartford, CT Area<br>
-                📧 email@example.com<br>
-                📞 860-555-0123
-            </p>
+            <h3>Contact Info</h3>
+            <p style="margin-bottom: 20px;">Email: you@email.com<br>Phone: 555-555-5555</p>
 
-            <h3>CORE STRENGTHS</h3>
-            <ul class="skill-list">
-                <li>Safety & Compliance</li>
-                <li>Quality Assurance</li>
-                <li>Mechanical Aptitude</li>
-                <li>Lean Manufacturing</li>
-                <li>Rapid Learner</li>
-                <li>Team Collaboration</li>
-            </ul>
-
-            <h3>TOOLS</h3>
-            <ul class="skill-list">
-                <li>Power Tools</li>
-                <li>Basic CAD/Blueprints</li>
-                <li>Microsoft Office</li>
-                <li>Inventory Systems</li>
-            </ul>
+            <h3>Core Skills</h3>
+            <div class="skill-box">Safety Compliance</div>
+            <div class="skill-box">Mechanical Aptitude</div>
+            <div class="skill-box">Quality Assurance</div>
+            <div class="skill-box">Team Collaboration</div>
         </aside>
 
         <main class="content">
-            <h2>PROFESSIONAL SUMMARY</h2>
-            <p style="margin-bottom: 40px;">
-                Dedicated and reliable professional with a strong commitment to <strong>Safety and Quality Excellence</strong>. Seeking to leverage my mechanical aptitude and fast-learning capabilities to contribute to the world-class manufacturing team at <strong>Pratt & Whitney</strong>.
-            </p>
+            <h2>Professional Summary</h2>
+            <p>Dedicated professional committed to the high standards of aerospace excellence at Pratt & Whitney. Focused on precision, safety, and delivering zero-defect results.</p>
 
-            <h2>WORK EXPERIENCE</h2>
-            
-            <div class="job-block">
-                <span class="job-title">Your Previous Job Title</span>
-                <span class="company-info">Company Name | 20XX — 20XX</span>
-                <ul>
-                    <li>Maintained strict adherence to safety protocols in a fast-paced environment.</li>
-                    <li>Demonstrated extreme attention to detail to ensure zero-defect output.</li>
-                    <li>Collaborated with team members to hit daily production and quality targets.</li>
-                </ul>
-            </div>
-
-            <div class="job-block">
-                <span class="job-title">Another Job Title</span>
-                <span class="company-info">Company Name | 20XX — 20XX</span>
-                <ul>
-                    <li>Quickly mastered new equipment and operational procedures.</li>
-                    <li>Consistently recognized for punctuality and professional reliability.</li>
-                </ul>
-            </div>
-
-            <h2>EDUCATION & TRAINING</h2>
-            <p><strong>High School Diploma</strong><br>
-            [Your School Name], [City, State]</p>
+            <h2 style="margin-top: 30px;">Work Experience</h2>
+            <p><strong>Your Job Title</strong><br>Company Name | Dates</p>
+            <ul>
+                <li>Maintained high safety standards daily.</li>
+                <li>Operated equipment with 100% accuracy.</li>
+            </ul>
         </main>
     </div>
 
-    <footer class="footer">
-        P&W CANDIDATE PROFILE // REQ ID: [JOB-ID] // CONFIDENTIAL 2024
-    </footer>
-
 </body>
-</html>Ï
+</html>
